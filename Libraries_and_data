@@ -1,0 +1,94 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Libraries_and_data",
+      "provenance": [],
+      "collapsed_sections": [],
+      "authorship_tag": "ABX9TyPmYZ8Jvcn0bgMyUtQqwHvY"
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "9Lnqnj8mrgq3"
+      },
+      "source": [
+        "### **Importing libraries and data**\n",
+        "\n",
+        "For the PoS tagger [spaCy + UDPipe library](https://pypi.org/project/spacy-udpipe/) and [SynTagRus treebank](https://universaldependencies.org/treebanks/ru_syntagrus/index.html) were used. [Pyconll](https://pyconll.readthedocs.io/en/stable/) was used to process the training data.\n",
+        "\n",
+        "For the model training [Scikit-learn](https://scikit-learn.org/) and [PyTorch](https://pytorch.org/) were used."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "1vBYKchRUAnK"
+      },
+      "source": [
+        "# UDPipe for language data processing \n",
+        "# Pyconll for the dataset processing\n",
+        "\n",
+        "!pip install pyconll\n",
+        "!pip install spacy_udpipe"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "MR6vQkW5UITw"
+      },
+      "source": [
+        "%load_ext autoreload\n",
+        "%autoreload 2\n",
+        "\n",
+        "import warnings\n",
+        "warnings.filterwarnings('ignore')\n",
+        "\n",
+        "# Scikit-learn for the model evaluation\n",
+        "\n",
+        "from sklearn.metrics import classification_report\n",
+        "\n",
+        "# NumPy-arrays for the dataset processing\n",
+        "\n",
+        "import numpy as np\n",
+        "\n",
+        "# PyConll for the SynTagRus data processing\n",
+        "\n",
+        "import pyconll\n",
+        "\n",
+        "# PyTorch for the model training\n",
+        "\n",
+        "import torch\n",
+        "from torch import nn\n",
+        "from torch.nn import functional as F\n",
+        "from torch.utils.data import TensorDataset"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "K19cXGiQde8D"
+      },
+      "source": [
+        "# Downloading the data from SynTagRus\n",
+        "\n",
+        "!wget https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-SynTagRus/master/ru_syntagrus-ud-train.conllu\n",
+        "!wget https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-SynTagRus/master/ru_syntagrus-ud-dev.conllu"
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
